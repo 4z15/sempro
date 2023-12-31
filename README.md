@@ -31,9 +31,7 @@ Aplikasi ini adalah aplikasi pencatatan pesanan sayuran di Toko Edos Sayur mengg
 - [Telegram](https://web.telegram.org/a/)
 
 
-### Doping
 
-- kopi goodday mocacino
   
 
 
