@@ -1,0 +1,16 @@
+lihat harga barang
+
+nama_barang
+harga_barang
+
+fitur cust yang hutang
+
+nama
+jumlah_hutang
+update hutang
+delete hutang
+
+belanja barang 
+
+nama_barang
+total harga

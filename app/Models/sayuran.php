@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class sayuran extends Model
+{
+    use HasFactory;
+    protected $fillable = [
+    'stok', // <-- new column name
+    // .. other column names
+];
+}

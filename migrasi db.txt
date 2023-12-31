@@ -1,0 +1,19 @@
+   $table->id();
+            $table->unsignedBigInteger('pesanan_id');
+            $table->string('nama');
+            $table->integer('telp');
+            $table->date('tanggal');
+            $table->integer('status');
+            $table->foreign('pesanan_id')->references('id')->on('pesanans');
+            $table->timestamps();
+
+
+$table->id();
+            $table->unsignedBigInteger('sayuran_id');
+            $table->unsignedBigInteger('customer_id');
+            $table->string('pesanan');
+            $table->integer('total');
+            $table->integer('berat');
+            $table->timestamps();
+            $table->foreign('sayuran_id')->references('id')->on('sayurans');
+            $table->foreign('customer_id')->references('id')->on('customers');

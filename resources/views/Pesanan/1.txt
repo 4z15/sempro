@@ -1,0 +1,75 @@
+ {{-- @if ($errors->any())
+<div class="alert alert-danger">
+  Validation Error!
+</div>
+@endif --}}
+
+{{-- <option value="">-Pilih-</option>
+@foreach($sayurans as $sayur)
+<option value="{{ $sayur->id }}-{{ $sayur->nama }}-{{ $sayur->harga_kg }}" {{ (in_array($sayur->id, old('sayuran_id', []))) ? 'selected' : '' }}>
+  {{ $sayur->nama }}-{{ $sayur->harga_kg }}
+</option>
+@endforeach --}}
+
+{{-- @php
+$oldBeratSayurs = old('berat_sayurs');
+$lastBerat = $oldBeratSayurs ? $oldBeratSayurs[count($oldBeratSayurs) - 1] : null;
+@endphp
+
+<input type="number" placeholder="berat" name="berat_sayurs[]" id ="berat_sayurs" value="{{ $lastBerat }}" class="form-control berat">
+@foreach ($errors->get('berat_sayurs.*') as $error)
+<div class="alert alert-danger alert-block">
+  {{ $error[0] }}
+</div>
+@endforeach --}}
+ {{-- <h1>Move Selected Option Values to Table</h1> --}}
+          {{-- <div class="d-flex mb-3 mt-3 mr-2">
+            <select id="selectOption" name="sayuran_id[]" class="form-control mr-2" onchange="moveValuesToTable()" multiple>
+              <option value="">-Pilih-</option>
+              @foreach($sayurans as $sayur)
+              <option value="{{ $sayur->id }}-{{ $sayur->nama }}-{{ $sayur->harga_kg }}">
+                {{ $sayur->nama }}
+              </option>
+              @endforeach
+
+            </select>
+
+          </div> --}}
+
+// stok kurang otomatis
+    // $sayuran = sayuran::where('id',$id_sayur)->first();
+    // $stok_awal = $sayuran->stok;
+    // $jumlah_pesanan =  $request->input('berat');
+    // $stok_sekarang = $stok_awal - $jumlah_pesanan;
+    //   $sayuran->update([
+    //     'stok' => $stok_sekarang,
+    // ]
+    // );
+
+
+var sayuran = [
+       { nama: 'Bayam', harga: 20000 },
+       { nama: 'Kol', harga: 7000 },
+       { nama: 'Wortel', harga: 16000 }
+       ];
+
+       $('#cariSayur').on('input', function() {
+        var hasilCari = $('#hasilCari');
+        hasilCari.empty();
+
+        var keyword = $(this).val().toLowerCase();
+
+        if (keyword.length > 0) {
+          var hasilPencarian = sayuran.filter(function(sayur) {
+            return sayur.nama.toLowerCase().includes(keyword);
+          });
+
+          if (hasilPencarian.length > 0) {
+            hasilPencarian.forEach(function(sayur) {
+              hasilCari.append('<li class="list-group-item p-2" data-nama="'+sayur.nama+'" data-harga="'+sayur.harga+'">'+sayur.nama+' - '+sayur.harga+' </li>');
+            });
+          } else {
+            hasilCari.append('<li class="list-group-item p-2">Tidak ditemukan</li>');
+          }
+        }
+      });

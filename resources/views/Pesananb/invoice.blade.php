@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Struk</title>
+  <style>
+    body{
+      background-color: #F6F6F6; 
+      margin: 0;
+      padding: 0;
+    }
+    h1,h2,h3,h4,h5,h6{
+      margin: 0;
+      padding: 0;
+    }
+    p{
+      margin: 0;
+      padding: 0;
+    }
+    .container{
+      width: 80%;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    .brand-section{
+     background-color: #0d1033;
+     padding: 10px 40px;
+   }
+   .logo{
+    width: 50%;
+  }
+
+  .row{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .col-6{
+    width: 50%;
+    flex: 0 0 auto;
+    
+  }
+  .text-white{
+    color: #fff;
+  }
+  .company-details{
+    float: right;
+    text-align: right;
+  }
+  .body-section{
+    padding: 16px;
+    border: 1px solid gray;
+  }
+  .heading{
+    font-size: 20px;
+    margin-bottom: 08px;
+  }
+  .sub-heading{
+    color: #262626;
+    margin-bottom: 05px;
+  }
+  table{
+    background-color: #fff;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  table thead tr{
+    border: 1px solid #111;
+    background-color: #f2f2f2;
+  }
+  table td {
+    vertical-align: middle !important;
+    text-align: center;
+  }
+  table th, table td {
+    padding-top: 08px;
+    padding-bottom: 08px;
+  }
+  .table-bordered{
+    box-shadow: 0px 0px 5px 0.5px gray;
+  }
+  .table-bordered td, .table-bordered th {
+    border: 1px solid #dee2e6;
+  }
+  .text-right{
+    text-align: end;
+  }
+  .w-20{
+    width: 20%;
+  }
+  .float-right{
+    float: right;
+  }
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="brand-section">
+      <div class="row">
+        <div class="col-6">
+          <h1 class="text-white">Edos Sayur</h1>
+          <p class="text-white">Kp.Cileutik</p>
+            <p class="text-white">081224267319</p>
+        </div>
+        <div class="col-6">
+          <div class="company-details">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="body-section">
+      <div class="row">
+        <div class="col-6">
+          {{-- <h2 class="heading">No.Struk.: {} </h2> --}}
+           <p class="sub-heading">Nama:  {{ $customers->nama }}</p>
+          <p class="sub-heading">Tanggal:  {{ $customers->tanggal }}</p>
+          {{-- <p class="sub-heading">Address:  </p> --}}
+          <p class="sub-heading">Telp: {{ $customers->telp }} </p>
+
+        </div>
+        <div class="col-6">
+         
+          {{-- <p class="sub-heading">City,State,Pincode:  </p> --}}
+        </div>
+      </div>
+    </div>
+
+    <div class="body-section">
+      <h3 class="heading">Pesanan</h3>
+      <br>
+      <table class="table-bordered">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th class="w-20">Jumlah</th>
+            <th class="w-20">Harga</th>
+            {{-- <th class="w-20">Grandtotal</th> --}}
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($customers->pesanan as $cust)
+          <tr>
+            <td>{{ $cust->pesanan }}</td>
+            <td>{{ $cust->berat }}</td>
+            <td>{{ $cust->harga }}</td>
+            {{-- <td>10</td> --}}
+          </tr>
+          @endforeach
+
+          <tr>
+            <td colspan="2" class="text-right">Sub Total </td>
+            <td>Rp.{{ $cust->total }}</td>
+
+          </tr>
+
+        </tbody>
+      </table>
+      <br>
+
+    </div>
+
+
+  </div>      
+
+</body>
+</html>
